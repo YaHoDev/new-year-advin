@@ -149,13 +149,18 @@
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var warningBanner = document.querySelector("#unity-warning");
       var loadingText = document.getElementById("loading-text");
+      var pubPercentage = 0;
 
       function updateProgress(progress) {
         const percentage = Math.round(progress * 100);
+        if(percentage >= pubPercentage) {
+          pubPercentage = percentage;
+        }
+      
         
         // Оновлюємо текст відсотків
         const loadingText = document.getElementById("loading-text");
-        loadingText.innerText = `${percentage}%`;
+        loadingText.innerText = `${pubPercentage}%`;
 
         // Обчислюємо новий offset для кола
         const progressCircle = document.getElementById("progress-circle");

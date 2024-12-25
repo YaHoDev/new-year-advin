@@ -335,7 +335,7 @@
               }
           });
           var select = document.getElementById("chooseCamSel");
-          select.style.visibility = "visible";
+          select.style.visibility = "hidden";
           var count = 0;
           //reverse array because some Android phones can't distinguish front and back cams at first load
           //and when this happens, most of the time, front cam goes first and back cam goes last
@@ -355,11 +355,11 @@
           iTracker.WEBCAM_NAME = select.options[select.selectedIndex].innerHTML;
       }
       function SelectCam(){
-           var select = document.getElementById("chooseCamSel");
-          window.deviceId = select.value;
-          window.WEBCAM_SETTINGS.video['deviceId'] = deviceId;
-          console.log(window.WEBCAM_SETTINGS);
-          iTracker.WEBCAM_NAME = select.options[select.selectedIndex].innerHTML;
+          //  var select = document.getElementById("chooseCamSel");
+          // window.deviceId = select.value;
+          // window.WEBCAM_SETTINGS.video['deviceId'] = deviceId;
+          // console.log(window.WEBCAM_SETTINGS);
+          // iTracker.WEBCAM_NAME = select.options[select.selectedIndex].innerHTML;
       }
       async function FlipCam(){
           arCamera.stopWebcam();

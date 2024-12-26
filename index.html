@@ -149,25 +149,18 @@
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var warningBanner = document.querySelector("#unity-warning");
       var loadingText = document.getElementById("loading-text");
-      var pubPercentage = 0;
-      var pubProgress = 0;
 
       function updateProgress(progress) {
         const percentage = Math.round(progress * 100);
-        if(percentage >= pubPercentage) {
-          pubPercentage = percentage;
-          pubProgress = progress;
-        }
-      
         
         // Оновлюємо текст відсотків
         const loadingText = document.getElementById("loading-text");
-        loadingText.innerText = `${pubPercentage}%`;
+        loadingText.innerText = `${percentage}%`;
 
         // Обчислюємо новий offset для кола
         const progressCircle = document.getElementById("progress-circle");
         const circumference = 2 * Math.PI * 16; // Довжина кола (r = 16)
-        const offset = circumference - (pubProgress * circumference);
+        const offset = circumference - (progress * circumference);
 
         // Застосовуємо offset
         progressCircle.style.strokeDashoffset = offset;
@@ -342,7 +335,7 @@
               }
           });
           var select = document.getElementById("chooseCamSel");
-          select.style.visibility = "hidden";
+          select.style.visibility = "visible";
           var count = 0;
           //reverse array because some Android phones can't distinguish front and back cams at first load
           //and when this happens, most of the time, front cam goes first and back cam goes last
@@ -362,11 +355,11 @@
           iTracker.WEBCAM_NAME = select.options[select.selectedIndex].innerHTML;
       }
       function SelectCam(){
-          //  var select = document.getElementById("chooseCamSel");
-          // window.deviceId = select.value;
-          // window.WEBCAM_SETTINGS.video['deviceId'] = deviceId;
-          // console.log(window.WEBCAM_SETTINGS);
-          // iTracker.WEBCAM_NAME = select.options[select.selectedIndex].innerHTML;
+           var select = document.getElementById("chooseCamSel");
+          window.deviceId = select.value;
+          window.WEBCAM_SETTINGS.video['deviceId'] = deviceId;
+          console.log(window.WEBCAM_SETTINGS);
+          iTracker.WEBCAM_NAME = select.options[select.selectedIndex].innerHTML;
       }
       async function FlipCam(){
           arCamera.stopWebcam();
